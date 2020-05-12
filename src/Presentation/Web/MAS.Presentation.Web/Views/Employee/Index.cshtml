@@ -1,0 +1,43 @@
+﻿@model IList<MAS.Aplication.DTOs.EmployeeDTO>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<form method="post" asp-action="GetEmployeesLibrary">
+    <div class="form-group">
+        <label for="Employee">Id</label>
+        <input type="text" class="form-control" id="id" aria-describedby="idEmployeeHelp" placeholder="Empty for all employees" name="id">
+        <small id="idEmployeeHelp" class="form-text text-muted">Write id for get the Employee or leave blank for get all employees.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Get</button>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">contractTypeName</th>
+            <th scope="col">AnualSalary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {   
+            <tr>
+                <th scope="row">@employee.Id</th>
+                <td>@employee.Name</td>
+                <td>@employee.contractTypeName</td>
+                <td>@employee.AnualSalary</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+

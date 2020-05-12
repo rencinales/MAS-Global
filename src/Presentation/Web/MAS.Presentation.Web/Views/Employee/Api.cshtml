@@ -1,0 +1,46 @@
+﻿@model IList<MAS.Aplication.DTOs.EmployeeDTO>
+@{
+    ViewData["Title"] = "Api Employee";
+}
+
+
+
+<form method="post" asp-action="GetEmployeesAPI">
+    <div class="form-group">
+        <label for="API url">API Url</label>
+        <input type="text" class="form-control" id="url" aria-describedby="APIUrlHelp" placeholder="Put the url of service" name="url" value="https://localhost:44385/Employee/GetEmployees">
+        <small id="APIUrlHelp" class="form-text text-muted">Here is the publish URL for the service tha consume the Core of the Application.</small>
+        <label for="Employee">Id</label>
+        <input type="text" class="form-control" id="id" aria-describedby="idEmployeeHelp" placeholder="Empty for all employees" name="id">
+        <small id="idEmployeeHelp" class="form-text text-muted">Write id for get the Employee or leave blank for get all employees.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Get</button>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">contractTypeName</th>
+            <th scope="col">AnualSalary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <th scope="row">@employee.Id</th>
+                <td>@employee.Name</td>
+                <td>@employee.contractTypeName</td>
+                <td>@employee.AnualSalary</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+

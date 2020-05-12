@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Component\MAS.Component.Core\MAS.Component.Core.csproj" />
+    <ProjectReference Include="..\..\Component\MAS.Component.Employees\MAS.Component.Employees.csproj" />
+  </ItemGroup>
+
+</Project>

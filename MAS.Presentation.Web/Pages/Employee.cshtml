@@ -1,0 +1,66 @@
+﻿@page
+@model MAS.Presentation.Web.Pages.EmployeeModel
+@{
+    ViewData["Title"] = "Employee";
+}
+
+<h1>Employee</h1>
+
+
+
+<form>
+    <div class="form-row align-items-center">
+        <div class="col-sm-3 my-1">
+            <label class="sr-only" for="inlineFormInputName">Id employee</label>
+            <input type="text" class="form-control" id="idEmployee" placeholder="Leave empty for all employees">
+        </div>        
+        <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary">Get</button>
+            <button type="submit" asp-page-handler="GetEmployees" asp-route-id="">Get all</button>
+                
+
+</div>
+    </div>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td></td>
+        </tr>
+        @foreach (var employee in Model.EmployeeDTOLst)
+        {
+            <tr>
+                <th scope="row">@employee.contractTypeName</th>
+                <td>@employee.Name </td>
+                <td>@employee.AnualSalary </td>
+                <td></td>
+            </tr>
+        }
+        
+    </tbody>
+</table>

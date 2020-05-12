@@ -24,13 +24,15 @@ namespace MAS.Presentation.WebAPI.Controllers
             _getEmployee = getEmployee;
         }
         
-        [HttpGet("GetEmployees")]        
+        [HttpGet("GetEmployees")]
+        [ResponseCache(Duration = 120, Location = ResponseCacheLocation.Any, NoStore = false)]
         public async Task< IList<EmployeeDTO>> GetEmployees()
         {
             return await _getEmployee.GetEmployees();
         }
 
-        [HttpGet("GetEmployees/{id}")]        
+        [HttpGet("GetEmployees/{id}")]
+        [ResponseCache(Duration = 120, Location = ResponseCacheLocation.Any, NoStore = false)]
         public async Task<EmployeeDTO> GetEmployees(int id)
         {
             return await _getEmployee.GetEmployees(id);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using MAS.Component.Core.Entities;
 using MAS.Component.Employees.Business;
 using MAS.Component.Employees.Infraestructure;
 using NUnit.Framework;
@@ -20,11 +21,16 @@ namespace Test.MAS.Component.Employees.Business
             _employeeService = new EmployeeService(_repository);
         }
         [Test]
-        public void AnnualSalaryOk()
+        public void AnnualSalaryHourlyOk()
+        {       
+            decimal salary = _employeeService.GetAnnualSalary(ContractType.HourlySalaryEmployee, Convert.ToDecimal(100), Convert.ToDecimal(100));            
+            Assert.AreEqual(144000, salary);
+        }
+        [Test]
+        public void AnnualSalaryMonthlyOk()
         {
-            //int salary = _employeeService.GetAnnualSalary(5);
-            int salary = 5000;
-            Assert.AreEqual(5000, salary);
+            decimal salary = _employeeService.GetAnnualSalary(ContractType.MonthlySalaryEmployee, Convert.ToDecimal(100), Convert.ToDecimal(100));
+            Assert.AreEqual(1200, salary);
         }
 
         [Test]
